@@ -34,12 +34,15 @@ website/
 
 Choose a static hosting provider and deploy the `public/` folder:
 
-**Cloudflare Pages (recommended):**
-1. Go to Cloudflare Dashboard → Pages → Create a project
-2. Connect your GitHub repo (`mjkaul/website`)
-3. Set build command: `hugo`
-4. Set output directory: `public`
-5. Deploy
+**Cloudflare Pages:**
+1. Go to Cloudflare Dashboard → Workers & Pages → Create application → Pages
+2. Select "Import an existing Git repository" and connect `mjkaul/website`
+3. Configure build settings:
+   - Production branch: `main`
+   - Build command: `hugo`
+   - Build directory: `public`
+4. (Optional) Add environment variable `HUGO_VERSION` = `0.148.2`
+5. Save and Deploy
 
 **Other options:** Netlify, Vercel, GitHub Pages
 
