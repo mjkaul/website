@@ -1,0 +1,124 @@
+body {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	line-height: 1.3;
+	margin: 0 1rem 1rem 1rem;
+	font-family: "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+	font-size: 120%;
+	background-color: #fff;
+}
+
+a {
+	font-weight: bold;
+	color: #F71735;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.container {
+	width: 100%;
+	max-width: 720px;
+	padding: 2rem;
+	text-align: left;
+	background-color: white;
+}
+
+h1, h2, p {
+	margin: 1rem 0;
+}
+
+h1, h2 {
+	font-weight: normal;
+}
+
+.site-header {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.site-header h1 {
+	margin: 0;
+}
+
+.site-header nav {
+	margin-top: 0.5rem;
+}
+
+.site-header nav a {
+	margin: 0 0.5rem;
+}
+
+.post {
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #eee;
+}
+
+.post:last-child {
+	border-bottom: none;
+}
+
+.post-title {
+	margin-bottom: 0.5rem;
+}
+
+.post-title a {
+	color: inherit;
+}
+
+.post-meta {
+	font-size: 0.85rem;
+	color: #666;
+	margin-bottom: 1rem;
+}
+
+.post-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+.post-content p:first-child {
+	margin-top: 0;
+}
+
+.pagination {
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.pagination a {
+	margin: 0 0.5rem;
+}
+
+.back-link {
+	display: block;
+	margin-bottom: 2rem;
+}
+
+.post-single .post-meta {
+	margin-bottom: 2rem;
+}
+
+.categories {
+	margin-top: 1rem;
+}
+
+.categories a {
+	font-size: 0.85rem;
+	margin-right: 0.5rem;
+}
+
+footer {
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid #eee;
+	font-size: 0.85rem;
+	color: #666;
+	text-align: center;
+}

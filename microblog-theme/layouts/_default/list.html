@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ $pages := where .Site.RegularPages "Type" "post" }}
+
+{{ range $pages.ByDate.Reverse }}
+<article class="post">
+	{{ if .Title }}
+	<h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+	{{ end }}
+	<div class="post-meta">
+		<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+	</div>
+	<div class="post-content">
+		{{ .Content }}
+	</div>
+	{{ with .Params.categories }}
+	<div class="categories">
+		{{ range . }}<a href="/categories/{{ . | urlize }}/">{{ . }}</a>{{ end }}
+	</div>
+	{{ end }}
+</article>
+{{ end }}
+
+{{ if .Paginator }}
+<nav class="pagination">
+	{{ if .Paginator.HasPrev }}<a href="{{ .Paginator.Prev.URL }}">&larr; Newer</a>{{ end }}
+	{{ if .Paginator.HasNext }}<a href="{{ .Paginator.Next.URL }}">Older &rarr;</a>{{ end }}
+</nav>
+{{ end }}
+{{ end }}

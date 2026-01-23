@@ -1,0 +1,22 @@
+{{ define "main" }}
+<a href="/" class="back-link">&larr; Back</a>
+
+<article class="post post-single">
+	{{ if .Title }}
+	<h1 class="post-title">{{ .Title }}</h1>
+	{{ end }}
+	<div class="post-meta">
+		<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+	</div>
+	<div class="post-content">
+		{{ .Content }}
+	</div>
+	{{ with .Params.categories }}
+	<div class="categories">
+		{{ range . }}<a href="/categories/{{ . | urlize }}/">{{ . }}</a>{{ end }}
+	</div>
+	{{ end }}
+</article>
+
+{{ partial "conversation.html" . }}
+{{ end }}
