@@ -1,124 +1,256 @@
-# Matthew Kaul's Website
+# Hugo + Micro.blog Personal Website Template
 
-Personal website built with Hugo, featuring essays and micro.blog integration.
+A minimal, elegant personal website setup that combines:
+- **Hugo** for your main homepage and long-form essays
+- **Micro.blog** for short posts and microblogging
+- **Unified design** across both platforms
 
-## What's Included
+Your main site displays essays you write in Markdown, plus a feed of your latest micro.blog posts. Both sites share the same visual design.
 
-- **Hugo-powered homepage** with dynamic essay listing
-- **Short posts section** that pulls recent posts from micro.blog
-- **Micro.blog theme** with matching design for visual consistency across both sites
+## Features
 
-## Local Development
+- Static site with no JavaScript frameworks or build complexity
+- Essays written in Markdown with automatic homepage listing
+- Short posts pulled from micro.blog in real-time
+- Matching Hugo theme for micro.blog
+- Archive page with year/month filtering
+- Mobile-responsive design
+
+## Quick Start
+
+### 1. Fork or Clone This Repo
 
 ```bash
-hugo server    # Start dev server at http://localhost:1313
-hugo           # Build static site to public/
+git clone https://github.com/YOUR_USERNAME/website.git
+cd website
 ```
 
-## Project Structure
+### 2. Install Hugo
 
+On macOS:
+```bash
+brew install hugo
 ```
-website/
-├── content/essays/       # Markdown essay files go here
-├── layouts/              # Hugo templates for main site
-├── microblog-theme/      # Theme for micro.blog
-├── hugo.toml             # Hugo configuration
-└── public/               # Generated output (gitignored)
+
+See [Hugo installation docs](https://gohugo.io/installation/) for other platforms.
+
+### 3. Preview Locally
+
+```bash
+hugo server
 ```
+
+Visit http://localhost:1313 to see your site.
 
 ---
 
-## Action Steps
+## Configuration
 
-### 1. Deploy the Main Site
+### Site Settings
 
-**GitHub Pages (recommended):**
-1. Go to your repo on GitHub → Settings → Pages
-2. Under "Build and deployment", set Source to **GitHub Actions**
-3. Create `.github/workflows/hugo.yml` (see below)
-4. Push to main - the site will build and deploy automatically
+Edit `hugo.toml`:
 
-The workflow file is already included in this repo at `.github/workflows/hugo.yml`.
+```toml
+baseURL = 'https://yourdomain.com/'
+languageCode = 'en-us'
+title = 'Your Name'
 
-**Cloudflare Pages (alternative):**
-1. Go to Cloudflare Dashboard → Workers & Pages → Create application → Pages
-2. Select "Import an existing Git repository" and connect `mjkaul/website`
-3. Configure build settings:
-   - Production branch: `main`
-   - Build command: `hugo`
-   - Build directory: `public`
-   - Deploy command: `npx wrangler pages deploy public`
-4. (Optional) Add environment variable `HUGO_VERSION` = `0.148.2`
-5. Save and Deploy
+[permalinks]
+  essays = '/essays/:slug/'
 
-### 2. Set Up Custom Domain (mjkaul.com)
+[params]
+  microblog_url = "https://micro.yourdomain.com"
+```
 
-**DNS Configuration (at your domain registrar):**
-- Add a CNAME record: `@` → `mjkaul.github.io`
-- Or for apex domain, add A records pointing to GitHub's IPs:
-  ```
-  185.199.108.153
-  185.199.109.153
-  185.199.110.153
-  185.199.111.153
-  ```
+### Customizing the Design
 
-**GitHub Pages Configuration:**
-1. Go to repo Settings → Pages
-2. Under "Custom domain", enter `mjkaul.com`
-3. Check "Enforce HTTPS" (after DNS propagates)
+The site's styling is in `layouts/_default/baseof.html`. Key values to customize:
 
-**Hugo Configuration:**
-The `hugo.toml` baseURL is already set to `https://mjkaul.com/`.
+```css
+/* Font family - change to your preferred fonts */
+font-family: "Iowan Old Style", Palatino, "Palatino Linotype", serif;
 
-### 3. Set Up Micro.blog Subdomain (micro.mjkaul.com)
+/* Base font size */
+font-size: 120%;
 
-**DNS Configuration:**
-- Add a CNAME record: `micro` → `micro.blog`
+/* Link color - change to match your brand */
+a { color: #F71735; }
 
-**Micro.blog Configuration:**
-1. Log in to micro.blog → Account → Edit Domains & Design
-2. Add `micro.mjkaul.com` as your custom domain
+/* Content width */
+max-width: 720px;
+```
 
-### 4. Install the Micro.blog Theme
+**Color ideas:**
+- Classic blue: `#2563eb`
+- Forest green: `#166534`
+- Purple: `#7c3aed`
+- Orange: `#ea580c`
+- Keep it black: `#000000`
 
-1. Log in to micro.blog
-2. Go to **Posts → Design → Edit Custom Themes**
-3. Click **New Theme**
-4. Enter a name (e.g., "Kaul Theme")
-5. Set **Clone URL** to: `https://github.com/mjkaul/website.git`
-   - Or create a separate repo with just the `microblog-theme/` contents
-6. Save and select the theme as your active design
+**Font ideas:**
+- System fonts: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
+- Serif: `Georgia, "Times New Roman", serif`
+- Monospace: `"SF Mono", Monaco, "Courier New", monospace`
 
-### 5. Write Your First Essay
+### Customizing the Homepage
 
-Create a file in `content/essays/`, e.g., `content/essays/my-first-essay.md`:
+Edit `layouts/index.html` to change:
+- Your bio/introduction
+- Section headings
+- Blogroll links
+- Any other static content
+
+The Essays section and Short Posts section are dynamic - they update automatically.
+
+---
+
+## Writing Essays
+
+Create a Markdown file in `content/essays/`:
+
+```bash
+touch content/essays/my-first-essay.md
+```
+
+Add frontmatter and content:
 
 ```yaml
 ---
 title: "My First Essay"
 date: 2024-01-23
-description: "A brief description for the homepage"
+description: "A brief description shown on the homepage"
 ---
 
 Your essay content here. Write in Markdown.
+
+## Subheadings work
+
+You can use all standard Markdown:
+- Lists
+- **Bold** and *italic*
+- [Links](https://example.com)
+- Images, code blocks, etc.
 ```
 
-Delete `content/essays/example-essay.md` when ready.
-
-### 6. Update Placeholder Content
-
-Edit `layouts/index.html` to replace:
-- Project placeholders in "Other projects" section
-- Any other placeholder text
+Essays automatically appear on your homepage, sorted by date (newest first).
 
 ---
 
-## Design
+## Deployment
 
-Both the main site and micro.blog theme share:
+### GitHub Pages (Recommended)
 
-- **Font:** Iowan Old Style, Palatino, serif
-- **Link color:** #F71735 (red), bold
-- **Max width:** 720px centered
-- **Inspired by:** [Rob Beschizza's homepage](https://beschizza.com/)
+1. Push your repo to GitHub
+2. Go to repo **Settings → Pages**
+3. Set Source to **GitHub Actions**
+4. The included workflow (`.github/workflows/hugo.yml`) builds and deploys automatically
+
+Your site will be at `https://USERNAME.github.io/REPO_NAME/`
+
+### Custom Domain
+
+1. **Add DNS records** at your registrar:
+   - A records pointing to GitHub's IPs:
+     ```
+     185.199.108.153
+     185.199.109.153
+     185.199.110.153
+     185.199.111.153
+     ```
+
+2. **Configure GitHub Pages:**
+   - Go to repo Settings → Pages
+   - Enter your custom domain
+   - Check "Enforce HTTPS" (after DNS propagates)
+
+3. **Update hugo.toml:**
+   ```toml
+   baseURL = 'https://yourdomain.com/'
+   ```
+
+---
+
+## Micro.blog Integration
+
+### Setting Up Short Posts
+
+The homepage includes a "Short Posts" section that fetches your latest micro.blog posts. Update the URL in `hugo.toml`:
+
+```toml
+[params]
+  microblog_url = "https://yourusername.micro.blog"
+```
+
+Or use a custom subdomain:
+```toml
+  microblog_url = "https://micro.yourdomain.com"
+```
+
+### Installing the Micro.blog Theme
+
+The `microblog-theme/` directory contains a matching Hugo theme for micro.blog.
+
+1. Create a separate repo with the theme contents, or use this repo directly
+2. In micro.blog: **Posts → Design → Edit Custom Themes → New Theme**
+3. Set **Clone URL** to your theme repo
+4. Save and select as your active theme
+
+### Custom Domain for Micro.blog
+
+1. **Add DNS:** CNAME record `micro` → `yourusername.micro.blog`
+2. **In micro.blog:** Account → Edit Domains → Add `micro.yourdomain.com`
+
+---
+
+## Customizing the Micro.blog Theme
+
+The theme files are in `microblog-theme/`. Key files:
+
+| File | Purpose |
+|------|---------|
+| `static/css/style.css` | All styling (colors, fonts, spacing) |
+| `layouts/partials/header.html` | Site header and navigation |
+| `layouts/partials/footer.html` | Footer content |
+| `layouts/_default/list.html` | Homepage post listing |
+| `layouts/_default/single.html` | Individual post pages |
+| `layouts/_default/list.archivehtml.html` | Archive page with filters |
+
+Edit `static/css/style.css` to match any design changes you made to your main site.
+
+---
+
+## Project Structure
+
+```
+website/
+├── content/
+│   └── essays/              # Your essay Markdown files
+├── layouts/
+│   ├── _default/
+│   │   └── baseof.html      # Base template with CSS
+│   ├── essays/
+│   │   └── single.html      # Essay page template
+│   └── index.html           # Homepage template
+├── microblog-theme/         # Micro.blog theme (separate repo recommended)
+├── .github/
+│   └── workflows/
+│       └── hugo.yml         # GitHub Pages deployment
+├── hugo.toml                # Site configuration
+└── README.md
+```
+
+---
+
+## Local Development
+
+```bash
+hugo server              # Dev server with live reload
+hugo                     # Build to public/
+hugo server -D           # Include draft posts
+```
+
+---
+
+## License
+
+MIT - Use this template however you like.
