@@ -51,15 +51,36 @@ The workflow file is already included in this repo at `.github/workflows/hugo.ym
 4. (Optional) Add environment variable `HUGO_VERSION` = `0.148.2`
 5. Save and Deploy
 
-### 2. Update Your Domain
+### 2. Set Up Custom Domain (mjkaul.com)
 
-In `hugo.toml`, change the baseURL to your actual domain:
+**DNS Configuration (at your domain registrar):**
+- Add a CNAME record: `@` → `mjkaul.github.io`
+- Or for apex domain, add A records pointing to GitHub's IPs:
+  ```
+  185.199.108.153
+  185.199.109.153
+  185.199.110.153
+  185.199.111.153
+  ```
 
-```toml
-baseURL = 'https://matthewkaul.com/'
-```
+**GitHub Pages Configuration:**
+1. Go to repo Settings → Pages
+2. Under "Custom domain", enter `mjkaul.com`
+3. Check "Enforce HTTPS" (after DNS propagates)
 
-### 3. Install the Micro.blog Theme
+**Hugo Configuration:**
+The `hugo.toml` baseURL is already set to `https://mjkaul.com/`.
+
+### 3. Set Up Micro.blog Subdomain (micro.mjkaul.com)
+
+**DNS Configuration:**
+- Add a CNAME record: `micro` → `micro.blog`
+
+**Micro.blog Configuration:**
+1. Log in to micro.blog → Account → Edit Domains & Design
+2. Add `micro.mjkaul.com` as your custom domain
+
+### 4. Install the Micro.blog Theme
 
 1. Log in to micro.blog
 2. Go to **Posts → Design → Edit Custom Themes**
@@ -68,17 +89,6 @@ baseURL = 'https://matthewkaul.com/'
 5. Set **Clone URL** to: `https://github.com/mjkaul/website.git`
    - Or create a separate repo with just the `microblog-theme/` contents
 6. Save and select the theme as your active design
-
-### 4. Update the Micro.blog URL (if needed)
-
-If you change your micro.blog subdomain, update `hugo.toml`:
-
-```toml
-[params]
-  microblog_url = "https://your-new-subdomain.micro.blog"
-```
-
-Then rebuild and redeploy.
 
 ### 5. Write Your First Essay
 

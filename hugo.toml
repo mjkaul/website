@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://mjkaul.com/'
 languageCode = 'en-us'
 title = 'Matthew Kaul'
 
@@ -6,4 +6,4 @@ title = 'Matthew Kaul'
   essays = '/essays/:slug/'
 
 [params]
-  microblog_url = "https://mjkaul.micro.blog"
+  microblog_url = "https://micro.mjkaul.com"
