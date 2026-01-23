@@ -32,19 +32,24 @@ website/
 
 ### 1. Deploy the Main Site
 
-Choose a static hosting provider and deploy the `public/` folder:
+**GitHub Pages (recommended):**
+1. Go to your repo on GitHub → Settings → Pages
+2. Under "Build and deployment", set Source to **GitHub Actions**
+3. Create `.github/workflows/hugo.yml` (see below)
+4. Push to main - the site will build and deploy automatically
 
-**Cloudflare Pages:**
+The workflow file is already included in this repo at `.github/workflows/hugo.yml`.
+
+**Cloudflare Pages (alternative):**
 1. Go to Cloudflare Dashboard → Workers & Pages → Create application → Pages
 2. Select "Import an existing Git repository" and connect `mjkaul/website`
 3. Configure build settings:
    - Production branch: `main`
    - Build command: `hugo`
    - Build directory: `public`
+   - Deploy command: `npx wrangler pages deploy public`
 4. (Optional) Add environment variable `HUGO_VERSION` = `0.148.2`
 5. Save and Deploy
-
-**Other options:** Netlify, Vercel, GitHub Pages
 
 ### 2. Update Your Domain
 
