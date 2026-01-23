@@ -35,10 +35,29 @@ Essays automatically appear on the homepage, sorted by date (newest first).
 ## Structure
 
 - `layouts/_default/baseof.html` - Base template with site CSS
-- `layouts/index.html` - Homepage template (lists essays dynamically)
+- `layouts/index.html` - Homepage template (lists essays, short posts dynamically)
 - `layouts/essays/single.html` - Individual essay page template
 - `content/essays/` - Markdown essay files
+- `microblog-theme/` - Hugo theme for micro.blog (matching style)
 - `public/` - Generated output (gitignored)
+
+## Short Posts (Micro.blog Integration)
+
+The homepage fetches the 5 most recent posts from micro.blog via JavaScript. Configure the URL in `hugo.toml`:
+
+```toml
+[params]
+  microblog_url = "https://mjkaul.micro.blog"
+```
+
+## Micro.blog Theme
+
+The `microblog-theme/` directory contains a Hugo theme for micro.blog with matching styling. To install:
+
+1. Push this repo to GitHub
+2. In micro.blog: Posts → Design → Edit Custom Themes → New Theme
+3. Set Clone URL to the repo URL
+4. Save and select the theme
 
 ## Styling
 
