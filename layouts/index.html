@@ -75,17 +75,13 @@
 				});
 				const url = post.url;
 
-				// Create a temporary element to extract text preview
-				const temp = document.createElement('div');
-				temp.innerHTML = content;
-				let preview = temp.textContent.substring(0, 200);
-				if (temp.textContent.length > 200) preview += '...';
-
+				html += '<div class="microblog-post">';
 				if (title) {
-					html += '<p><a href="' + url + '">' + title + '</a> — ' + preview + '</p>';
-				} else {
-					html += '<p>' + preview + ' <a href="' + url + '">(' + date + ')</a></p>';
+					html += '<p><strong><a href="' + url + '">' + title + '</a></strong></p>';
 				}
+				html += '<div class="microblog-content">' + content + '</div>';
+				html += '<p class="microblog-meta"><a href="' + url + '">' + date + '</a></p>';
+				html += '</div>';
 			});
 			container.innerHTML = html;
 		})
