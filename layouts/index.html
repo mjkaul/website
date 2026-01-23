@@ -13,6 +13,13 @@
 	<p><em>No essays yet.</em>
 	{{ end }}
 
+	<h2>Short Posts</h2>
+
+	<div id="microblog-posts">
+		<p><em>Loading...</em></p>
+	</div>
+	<p class="links"><a href="{{ .Site.Params.microblog_url }}">All short posts &rarr;</a></p>
+
 	<h2>Other projects</h2>
 
 	<p><a href="project1">example 1</a> is a explanation here.
@@ -42,4 +49,47 @@
 	<p><a href="https://beschizza.com/">Rob Beschizza</a> is a brilliant writer and indie web developer. Hope he doesn't mind my cloning his homepage as the template for my own. <a href="https://www.manton.org/">Manton Reece</a> is the brilliant mind behind <a href="https://micro.blog">Micro.blog</a>. <a href="https://www.htmlhobbyist.com/">HTML Hobbyist</a> is a great place to get started.
 
 </div>
+
+<script>
+(function() {
+	const microblogUrl = {{ .Site.Params.microblog_url }};
+	const feedUrl = microblogUrl + '/feed.json';
+	const container = document.getElementById('microblog-posts');
+
+	fetch(feedUrl)
+		.then(response => response.json())
+		.then(data => {
+			const posts = data.items.slice(0, 5);
+			if (posts.length === 0) {
+				container.innerHTML = '<p><em>No posts yet.</em></p>';
+				return;
+			}
+			let html = '';
+			posts.forEach(post => {
+				const title = post.title || '';
+				const content = post.content_html || post.content_text || '';
+				const date = new Date(post.date_published).toLocaleDateString('en-US', {
+					year: 'numeric', month: 'short', day: 'numeric'
+				});
+				const url = post.url;
+
+				// Create a temporary element to extract text preview
+				const temp = document.createElement('div');
+				temp.innerHTML = content;
+				let preview = temp.textContent.substring(0, 200);
+				if (temp.textContent.length > 200) preview += '...';
+
+				if (title) {
+					html += '<p><a href="' + url + '">' + title + '</a> — ' + preview + '</p>';
+				} else {
+					html += '<p>' + preview + ' <a href="' + url + '">(' + date + ')</a></p>';
+				}
+			});
+			container.innerHTML = html;
+		})
+		.catch(err => {
+			container.innerHTML = '<p><em>Could not load posts.</em></p>';
+		});
+})();
+</script>
 {{ end }}

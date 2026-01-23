@@ -4,3 +4,6 @@ title = 'Matthew Kaul'
 
 [permalinks]
   essays = '/essays/:slug/'
+
+[params]
+  microblog_url = "https://mjkaul.micro.blog"
