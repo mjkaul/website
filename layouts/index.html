@@ -4,10 +4,10 @@
 	<h1>Matthew Kaul</h1>
 
 	<p>Skeptical Christian humanist | essayist | lover of family, trees, rivers, &amp; books. <br />By day, I work as a <a href="https://medtronic.com">technical writer and project manager</a>.
-
-	<h2>Essays</h2>
 	<p>I also write a <a href="https://mjkaul.substack.com/">newsletter on Substack</a>.</p>
 		
+	<h2>Essays</h2>
+			
 	{{ range (where .Site.RegularPages "Section" "essays").ByDate.Reverse }}
 	<p><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.description }} — {{ . }}{{ end }}
 	{{ else }}
