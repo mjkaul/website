@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ if .IsHome }}Matthew Kaul{{ else }}{{ .Title }} | Matthew Kaul{{ end }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+	<meta name="author" content="Matthew Kaul" />
+	<style>
+body {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	line-height: 1.3;
+	margin: 0 1rem 1rem 1rem;
+	font-family: "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+	font-size: 120%;
+}
+
+a { font-weight: bold; color: #F71735; text-decoration: none; }
+
+.box {
+	width: 100%;
+	max-width: 720px;
+	padding: 2rem;
+	text-align: left;
+	background-color: white;
+	height: auto;
+}
+
+h1, h2, p { margin: 1rem 0; }
+h1, h2 { margin: 2rem 0; font-weight: normal; text-align: center; }
+
+.links { text-align: right; margin: 1.25rem 0 0 0; }
+
+.back-link { margin-bottom: 2rem; display: block; }
+	</style>
+</head>
+<body>
+{{ block "main" . }}{{ end }}
+</body>
+</html>

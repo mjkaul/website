@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="box" id="text">
+
+	<h1>Matthew Kaul</h1>
+
+	<p>Skeptical Christian humanist | essayist | lover of family, trees, rivers, &amp; books. By day, I work as a <a href="https://medtronic.com">technical writer and project manager</a>.
+
+	<h2>Essays</h2>
+
+	{{ range (where .Site.RegularPages "Section" "essays").ByDate.Reverse }}
+	<p><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.description }} — {{ . }}{{ end }}
+	{{ else }}
+	<p><em>No essays yet.</em>
+	{{ end }}
+
+	<h2>Other projects</h2>
+
+	<p><a href="project1">example 1</a> is a explanation here.
+
+	<p><a href="project2">example 2</a> is a explanation here.
+
+	<h2>Archive</h2>
+
+	<p><a href="https://boingboing.net/2014/06/03/how-it-works-the-computer.html">How It Works …. The Computer (Ladybird books, 1978)</a> I found a copy of one of my favorite childhood books about computers. And now you can enjoy it too!
+
+	<p><a href="https://boingboing.net/2012/08/07/a-sinister-reading-of-a-poky-l.html">A Sinister Reading of A Poky Little Puppy</a>. Sweet dreams, children.
+
+	<h2>Blogroll</h2>
+
+	<p><a href="https://blog.ayjay.org/">Alan Jacobs</a> (<a href="https://social.ayjay.org/">short posts here</a>) has been one of my favorite writers since I first encountered his work as an undergraduate, over 20 years ago now (!!).
+
+	<p>You simply have to read all of <a href="https://www.robinsloan.com/">Robin Sloan</a>'s work—his books, his blog—and also sample the delicious olive oil he and his partner make.
+
+	<p>I love <a href="https://nabeelqu.co/">Nabeel Qureshi's essays</a> on books and technology.
+
+	<p>Do I wish more jazz musicians were active on the indie web? I suppose not—not at the expense of making music. But there's always <a href="https://ethaniverson.com/">Ethan Iverson</a> and <a href="https://www.tedgioia.com/">Ted Gioia</a>, though both are more active on Substack now.
+
+	<p>I love the cabins built by <a href="https://www.youtube.com/@Bushradical">Bush Radical</a> and hope to one day build a similar cabin in the woods on my 7 acre homestead.
+
+	<h3>Indie Web</h3>
+
+	<p><a href="https://beschizza.com/">Rob Beschizza</a> is a brilliant writer and indie web developer. Hope he doesn't mind my cloning his homepage as the template for my own. <a href="https://www.manton.org/">Manton Reece</a> is the brilliant mind behind <a href="https://micro.blog">Micro.blog</a>. <a href="https://www.htmlhobbyist.com/">HTML Hobbyist</a> is a great place to get started.
+
+</div>
+{{ end }}
