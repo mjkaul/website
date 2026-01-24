@@ -1,7 +1,7 @@
-+++
-date = '2026-01-24T10:08:44-06:00'
-title = 'Improvisation, the Key'
-description = 'What jazz has to teach us"
-+++
+---                                                                                                          
+title: "Improvisation, the Key"                                                                              
+date: 2024-01-24                                                                                             
+description: "What jazz has to teach us"                                                                     
+---         
 
 A work in progress.
