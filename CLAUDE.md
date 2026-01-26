@@ -59,11 +59,35 @@ The `microblog-theme/` directory contains a Hugo theme for micro.blog with match
 3. Set Clone URL to the repo URL
 4. Save and select the theme
 
+## Social Footer
+
+Configure social links in `hugo.toml`:
+
+```toml
+[params.social]
+  github = "username"
+  twitter = "username"
+  linkedin = "username"
+  microblog = "https://micro.yourdomain.com"
+```
+
+Leave any value blank to hide that link.
+
+## Essay Git Status
+
+Essays automatically show version history at the bottom:
+- Last updated date (from git)
+- Change note (commit message)
+- Link to full git history on GitHub
+
+Requires `enableGitInfo = true` in `hugo.toml` (already configured).
+
 ## Styling
 
 - Font: Iowan Old Style/Palatino serif
 - Link color: `#F71735` (red), bold, no underline
 - Max content width: 720px
+- Images auto-resize to column width
 - Design based on Rob Beschizza's homepage
 
 ## Notes
