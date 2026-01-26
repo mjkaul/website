@@ -1,9 +1,17 @@
 baseURL = 'https://mjkaul.com/'
 languageCode = 'en-us'
 title = 'Matthew Kaul'
+enableGitInfo = true
 
 [permalinks]
   essays = '/essays/:slug/'
 
 [params]
   microblog_url = "https://micro.mjkaul.com"
+  github_repo = "https://github.com/mjkaul/website"
+
+[params.social]
+  github = "mjkaul"
+  twitter = ""
+  linkedin = ""
+  microblog = "https://micro.mjkaul.com"

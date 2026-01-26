@@ -5,5 +5,15 @@
 	<h1>{{ .Title }}</h1>
 
 	{{ .Content }}
+
+	{{ with .GitInfo }}
+	<div class="essay-meta">
+		<p>Last updated: {{ .AuthorDate.Format "January 2, 2006" }}</p>
+		{{ with .Subject }}<p>Change: {{ . }}</p>{{ end }}
+		{{ with $.Site.Params.github_repo }}
+		<p><a href="{{ . }}/commits/main/content/essays/{{ $.File.LogicalName }}">View history</a></p>
+		{{ end }}
+	</div>
+	{{ end }}
 </div>
 {{ end }}
