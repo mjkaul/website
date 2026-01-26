@@ -12,6 +12,6 @@ enableGitInfo = true
 
 [params.social]
   github = "mjkaul"
-  twitter = "mjkaul"
-  linkedin = "mjkaul"
+  x = "https://x.com/mjkaul"
+  linkedin = "https://www.linkedin.com/in/mjkaul/"
   microblog = "https://micro.mjkaul.com"

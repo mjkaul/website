@@ -66,7 +66,7 @@ Configure social links in `hugo.toml`:
 ```toml
 [params.social]
   github = "username"
-  twitter = "username"
+  x = "https://x.com/username"
   linkedin = "username"
   microblog = "https://micro.yourdomain.com"
 ```
