@@ -5,13 +5,7 @@ description: "Framework for a slightly odd religiosity"
 progress: 5   
 ---
 
-A work in progress.
-
-Welcome! This is the start of a new series on Skeptical Christian Humanism, or what I’m calling SCHum, a loose & obscure tradition that might be helpful to some fellow travelers in our world, which tends toward the opposite extremes: credulous, cynical, and anti-human.
-
-If this approach resonates with you, perhaps you too are SCHum. If that’s the case, you’re welcome here. If you think it’s nonsense, well, you’re welcome here too. Either way, leave a comment & let me know what you think.
-
-
+*A work in progress.*
 
 There are innumerable ways to be religious. Each and every person who has ever lived has to find their own way, whether or not they adhere to a particular creed. I don’t pretend that the path I present here is better than any of the others, though I do happen to think it’s a good approach. It’s simply the path that has presented itself as the most plausible one to me. I hope that illuminating this path might help you on your journey.
 
@@ -19,10 +13,9 @@ I’ll start by saying I usually don’t feel like I fit in, whatever religious 
 
 So, what do I have to say for myself? Why does it feel like such a struggle to fit in? The best I can come up with is that I am a skeptical Christian humanist. Each of these three terms is carefully chosen, and how they relate to each other matters. Let me try to explain.
 
+-----
 
 ![Caravaggio, The Incredulity of Thomas, 1602. Courtesy Wikipedia.](/images/Caravaggio_Thomas.jpg)
-
------
 
 I. Skeptical
 
@@ -55,9 +48,9 @@ He knew a lot. But the refrain was a principle of humility, a spirit of openness
 
 -->
 
-![Andrei Rublev’s Trinity icon, early 15th century. Courtesy Wikipedia.](/images/Rublev_Trinity.jpg)
-
 -----
+
+![Andrei Rublev’s Trinity icon, early 15th century. Courtesy Wikipedia.](/images/Rublev_Trinity.jpg)
 
 II. Christian
 
