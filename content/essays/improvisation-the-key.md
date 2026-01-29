@@ -2,7 +2,7 @@
 title: "Improvisation, the Key"                                                                              
 date: 2024-01-24                                                                                             
 description: "What jazz has to teach us"   
-progress: 50                                                                  
+progress: 25                                                                
 ---         
 
 # Jazz as a way of life
