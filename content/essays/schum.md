@@ -2,6 +2,7 @@
 title: "Skeptical Christian Humanism"
 date: 2024-01-28
 description: "Framework for a slightly odd religiosity"
+progress: 5   
 ---
 
 A work in progress.

@@ -2,7 +2,8 @@
 title: "Strange Life"
 date: 2024-01-23
 description: "The more we learn about life & consciousness, the more we learn how strange they both are. What should we do with this?"
+progress: 0
 ---
 
-A work in progress.
+*Coming soon.*
 
