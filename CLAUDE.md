@@ -27,10 +27,13 @@ Create a markdown file in `content/essays/` with frontmatter:
 title: "Essay Title"
 date: 2024-01-23
 description: "Brief description shown on homepage"
+progress: 75
 ---
 ```
 
 Essays automatically appear on the homepage, sorted by date (newest first).
+
+The optional `progress` field (0-100) shows completion percentage on the homepage and essay page.
 
 ## Structure
 

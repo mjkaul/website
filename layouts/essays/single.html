@@ -6,14 +6,15 @@
 
 	{{ .Content }}
 
-	{{ with .GitInfo }}
 	<div class="essay-meta">
+		{{ with .Params.progress }}<p>Progress: {{ . }}% complete</p>{{ end }}
+		{{ with .GitInfo }}
 		<p>Last updated: {{ .AuthorDate.Format "January 2, 2006" }}</p>
 		{{ with .Subject }}<p>Change: {{ . }}</p>{{ end }}
 		{{ with $.Site.Params.github_repo }}
 		<p><a href="{{ . }}/commits/main/content/essays/{{ $.File.LogicalName }}">View history</a></p>
 		{{ end }}
+		{{ end }}
 	</div>
-	{{ end }}
 </div>
 {{ end }}
