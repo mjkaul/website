@@ -37,7 +37,7 @@ Throughout my formative years, I experienced both a growing conviction that ther
 
 ***
 
-I took a philosophy of science class as an undergraduate at the University of Minnesota. The professor, Ronald Giere, was a radical skeptic. If you made a movie about him, he could be played well by Paul Giamatti, though in terms of his disposition he was much closer to Woody Allen—cynical, defeated by life, yet still wryly amused by everything. Professor Giere, as best I remember, basically believed that 
+I took a philosophy of science class as an undergraduate at the University of Minnesota. The professor, Ronald Giere, was a radical skeptic. If you made a movie about him, he could be played well by Paul Giamatti, though in terms of his disposition he was much closer to Woody Allen—cynical, defeated by life, yet still wryly amused by everything. Professor Giere, as best I remember, basically believed that every scientific theory was a narrative approximation of reality, never a reflection of reality itself. Therefore, over time, every scientific theory was more or less destined to be replaced by some new paradigm that more plausibly accounted for the facts as we understood them. (I remember Prof. Giere giving the example of how we think of earth as a globe—when in fact it's covered by mountains and valleys across its entire surface, and would hardly resemble a global at all if you're up close. I didn't find this particularly compelling. If we're only being truly honest when we inhabit the world of perfect Platonic forms, we'd miss some pretty crucial distinctions between brazen acts of dishonesty and the everyday, well-intentioned ways of speaking most people use constantly.)
 
 Why not just let skepticism dominate?
 
@@ -105,6 +105,6 @@ The influence of humanism on Christianity & skepticism: against instrumentalizin
 
 -----
 
-Coming soon: an essay on the people I see as the main thinkers in the Skeptical Christian Humanist tradition, from Jesus through Shakespeare & Jane Austen up to today.
+Coming soon: a section on the people I see as the main thinkers in the Skeptical Christian Humanist tradition—Chaucer, Montaigne, Shakespeare, Jane Austen, P.G. Wodehouse, etc.
 
 -->
