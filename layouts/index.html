@@ -8,7 +8,7 @@
 	<h2>Essays</h2>
 			
 	{{ range (where .Site.RegularPages "Section" "essays").ByDate.Reverse }}
-	<p><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.progress }} <span class="progress">({{ . }}% complete)</span>{{ end }}{{ with .Params.description }} — {{ . }}{{ end }}
+	<p><a href="{{ .RelPermalink }}">{{ .Title }}</a> <em>({{ with .Params.progress }}{{ . }}% complete; {{ end }}last updated {{ .Lastmod.Format "02-Jan-2006" }})</em>{{ with .Params.description }} — {{ . }}{{ end }}
 	{{ else }}
 	<p><em>No essays yet.</em>
 	{{ end }}
