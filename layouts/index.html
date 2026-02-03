@@ -46,6 +46,7 @@
 			{{ with .Value }}
 				{{ $feed := . | transform.Unmarshal }}
 				{{ $source := "Unknown" }}
+				{{ $feedItems := slice }}
 				{{/* RSS 2.0 format with rss wrapper */}}
 				{{ with $feed.rss }}
 					{{ with .channel.title }}{{ $source = . }}{{ end }}
@@ -53,7 +54,7 @@
 						{{ range . }}
 							{{ $dateStr := .pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
 							{{ $item := dict "title" .title "link" .link "pubDate" $dateStr "source" $source }}
-							{{ $allItems = $allItems | append $item }}
+							{{ $feedItems = $feedItems | append $item }}
 						{{ end }}
 					{{ end }}
 				{{ end }}
@@ -64,7 +65,7 @@
 						{{ range . }}
 							{{ $dateStr := .pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
 							{{ $item := dict "title" .title "link" .link "pubDate" $dateStr "source" $source }}
-							{{ $allItems = $allItems | append $item }}
+							{{ $feedItems = $feedItems | append $item }}
 						{{ end }}
 					{{ end }}
 				{{ end }}
@@ -104,13 +105,17 @@
 						{{ $pubDate := .updated | default .published }}
 						{{ $dateStr := $pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
 						{{ $item := dict "title" $title "link" $link "pubDate" $dateStr "source" $source }}
-						{{ $allItems = $allItems | append $item }}
+						{{ $feedItems = $feedItems | append $item }}
 					{{ end }}
+				{{ end }}
+				{{/* Take only the 2 most recent posts from this feed */}}
+				{{ range first 2 (sort $feedItems "pubDate" "desc") }}
+					{{ $allItems = $allItems | append . }}
 				{{ end }}
 			{{ end }}
 		{{ end }}
 	{{ end }}
-	{{ range first 10 (sort $allItems "pubDate" "desc") }}
+	{{ range sort $allItems "pubDate" "desc" }}
 	<p><a href="{{ .link }}">{{ .title }}</a> <span class="feed-source">({{ .source }})</span>
 	{{ else }}
 	<p><em>No feed items available.</em>
