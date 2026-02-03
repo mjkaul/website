@@ -37,7 +37,86 @@
 	<p><a href="archive3">Archive 3</a> with explanation here.
 
 	-->
-		<h2>Blogroll</h2>
+
+	<h2>Here's something interesting to read</h2>
+
+	{{ $allItems := slice }}
+	{{ range $feedURL := .Site.Data.feeds.feeds }}
+		{{ with try (resources.GetRemote $feedURL) }}
+			{{ with .Value }}
+				{{ $feed := . | transform.Unmarshal }}
+				{{ $source := "Unknown" }}
+				{{/* RSS 2.0 format with rss wrapper */}}
+				{{ with $feed.rss }}
+					{{ with .channel.title }}{{ $source = . }}{{ end }}
+					{{ with .channel.item }}
+						{{ range . }}
+							{{ $dateStr := .pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
+							{{ $item := dict "title" .title "link" .link "pubDate" $dateStr "source" $source }}
+							{{ $allItems = $allItems | append $item }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+				{{/* RSS 2.0 format without rss wrapper */}}
+				{{ with $feed.channel }}
+					{{ with .title }}{{ $source = . }}{{ end }}
+					{{ with .item }}
+						{{ range . }}
+							{{ $dateStr := .pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
+							{{ $item := dict "title" .title "link" .link "pubDate" $dateStr "source" $source }}
+							{{ $allItems = $allItems | append $item }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+				{{/* Atom feed format - check for entry at top level */}}
+				{{ with $feed.entry }}
+					{{/* Get source name - may be string or map with #text */}}
+					{{ with $feed.title }}
+						{{ if reflect.IsMap . }}
+							{{ with index . "#text" }}{{ $source = . }}{{ end }}
+						{{ else }}
+							{{ $source = . }}
+						{{ end }}
+					{{ end }}
+					{{ range . }}
+						{{/* Get link href */}}
+						{{ $link := "" }}
+						{{ with .link }}
+							{{ if reflect.IsSlice . }}
+								{{ range . }}
+									{{ with index . "-href" }}{{ $link = . }}{{ end }}
+								{{ end }}
+							{{ else if reflect.IsMap . }}
+								{{ with index . "-href" }}{{ $link = . }}{{ end }}
+							{{ else }}
+								{{ $link = . }}
+							{{ end }}
+						{{ end }}
+						{{/* Get title text */}}
+						{{ $title := "" }}
+						{{ with .title }}
+							{{ if reflect.IsMap . }}
+								{{ with index . "#text" }}{{ $title = . }}{{ end }}
+							{{ else }}
+								{{ $title = . }}
+							{{ end }}
+						{{ end }}
+						{{ $pubDate := .updated | default .published }}
+						{{ $dateStr := $pubDate | time.AsTime | time.Format "2006-01-02T15:04:05Z" }}
+						{{ $item := dict "title" $title "link" $link "pubDate" $dateStr "source" $source }}
+						{{ $allItems = $allItems | append $item }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+	{{ range first 10 (sort $allItems "pubDate" "desc") }}
+	<p><a href="{{ .link }}">{{ .title }}</a> <span class="feed-source">({{ .source }})</span>
+	{{ else }}
+	<p><em>No feed items available.</em>
+	{{ end }}
+
+	<h2>Blogroll</h2>
 
 	<p>Justin Smith-Ruiu's <a href="https://www.the-hinternet.com/"><em>The Hinternet</em></a>. David Bentley Hart's <a href="https://davidbentleyhart.substack.com/"><em>Leaves in the Wind</em></a>. <a href="https://blog.ayjay.org/">Alan Jacobs</a>, esp. his <a href="https://blog.ayjay.org/my-books/">books</a>. <a href="https://www.robinsloan.com/">Robin Sloan</a>, master cultivator. <a href="https://ethaniverson.com/">Ethan Iverson</a>'s incredible interviews. Gioia brothers <a href="https://www.tedgioia.com/">Ted</a> and <a href="https://danagioia.com/">Dana</a>. My own brother, one of the brilliant <a href="https://buddy-buddy.co/">Buddy-Buddy</a> buddies.
 

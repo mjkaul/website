@@ -1,0 +1,7 @@
+# RSS feeds to aggregate on the homepage
+# Add or remove feeds as you like - rebuild site to update
+
+feeds:
+  - https://blog.ayjay.org/feed/
+  - https://www.robinsloan.com/feed.xml
+  - https://ethaniverson.com/feed/

@@ -3,6 +3,11 @@ languageCode = 'en-us'
 title = 'Matthew Kaul'
 enableGitInfo = true
 
+[security]
+  [security.http]
+    urls = ['.*']
+    methods = ['(?i)GET']
+
 [permalinks]
   essays = '/essays/:slug/'
 
